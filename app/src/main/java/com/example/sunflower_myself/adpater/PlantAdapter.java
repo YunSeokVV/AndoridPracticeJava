@@ -1,5 +1,6 @@
 package com.example.sunflower_myself.adpater;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> {
 
-    private List<String> mData;
+    private List<Plant> data;
     private OnItemClickListener mListener = null;
     public interface OnItemClickListener{
         void onItemCLick(View v, int position);
@@ -28,8 +29,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
         mListener = listener;
     }
 
-    public PlantAdapter(List<String> data) {
-        mData = data;
+    public PlantAdapter(List<Plant> data) {
+        this.data = data;
     }
 
     @Override
@@ -40,12 +41,15 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.textViewItem.setText(mData.get(position));
+        String plantName = data.get(position).getName();
+        int imageRoute = data.get(position).getImageResource();
+        holder.textViewItem.setText(plantName);
+        holder.imageView.setImageResource(imageRoute);
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return data.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

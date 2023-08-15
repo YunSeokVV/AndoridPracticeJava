@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="theme">#49BB79</color>
     <color name="watering_needs">#49BB79</color>
+    <color name="add_btn">#FFFF63</color>
     <color name="dark_white">#FAFAFA</color>
 </resources>

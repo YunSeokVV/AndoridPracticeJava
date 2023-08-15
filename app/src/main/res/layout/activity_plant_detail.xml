@@ -14,44 +14,71 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
 
             <ImageView
+                android:id="@+id/plant_image"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginBottom="40dp"
-                android:background="@drawable/apple_garden" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="fitXY"
+                />
 
             <TextView
+                android:id="@+id/fuitName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Apple"
-                android:textSize="35sp" />
+                android:textSize="35sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant_image" />
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Waterint needs"
-                android:textColor="@color/watering_needs" />
+                android:textColor="@color/watering_needs"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fuitName" />
 
             <TextView
+                android:id="@+id/wateringNeeds"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="every 30 datys" />
+                android:text="every 30 datys"
+
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/apple_description"/>
+                android:text="@string/apple_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wateringNeeds" />
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/addGardenBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/add_btn_yellow"
+                app:layout_constraintBottom_toTopOf="@+id/textView3"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
@@ -59,14 +86,14 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/circle_shape"
-        android:id="@+id/back_btn"
+        android:id="@+id/backBtn"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/share_btn"
+        android:id="@+id/shareBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -74,7 +101,6 @@
         android:background="@drawable/circle_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

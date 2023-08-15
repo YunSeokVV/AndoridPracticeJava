@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.sunflower_myself.R;
 import com.example.sunflower_myself.adpater.PlantAdapter;
+import com.example.sunflower_myself.vo.Plant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,10 @@ public class PlantListFragment extends Fragment {
     // 목록에 모든 식물을 보여준다
     private boolean filter_all = true;
 
-    List<String> data;
+    List<Plant> data;
+
+    String[] plantNames = {"Apple", "Avocado", "Beet", "Bougainvillea", "Cilantro", "EggPlant", "Grape", "Hibiscus", "Mango", "Orange", "Pear", "Pink & White", "Rocky Mountain", "Sunflower", "Tomato", "Watermelon", "Yulan Magnolia"};
+    String[] plantImages = {"apple", "avocado", "beet", "bougainvillea", "cilantro", "eggplant", "grape", "hibiscus", "mango", "orange", "pear", "pink_white", "rockymountian", "sunflower", "tomato", "watermelon", "yulanmagnolia"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,9 +52,12 @@ public class PlantListFragment extends Fragment {
         //내가 알던 기존의 방식과 2열로 리사이클러뷰를 출력하기 위해서 GridLayout 사용.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns));
 
-        data = new ArrayList<>();
+        data = new ArrayList<Plant>();
+
         for(int i=0; i<17; i++){
-            data.add("Item "+i);
+            int res = this.getResources().getIdentifier(plantImages[i], "drawable", getContext().getPackageName());
+            Plant plant = new Plant(i, plantNames[i], i, res);
+            data.add(plant);
         }
 
         plantAdapter = new PlantAdapter(data);
@@ -59,8 +66,11 @@ public class PlantListFragment extends Fragment {
         plantAdapter.setOnItemClickListener(new PlantAdapter.OnItemClickListener() {
             @Override
             public void onItemCLick(View v, int position) {
-                System.out.println("hello!!!!");
                 Intent intent = new Intent(getContext(), PlantDetailActivity.class);
+                intent.putExtra("waterPeriod", data.get(position).getWaterPeriod());
+                intent.putExtra("plantName", data.get(position).getName());
+                intent.putExtra("plantImage", data.get(position).getImageResource());
+                System.out.println("waterPeriod!! "+data.get(position).getWaterPeriod());
                 startActivity(intent);
             }
         });
@@ -74,13 +84,14 @@ public class PlantListFragment extends Fragment {
         if(filter_all){
             //data.clear();
             for(int i=4; i<17; i++){
-                data.add("Item "+i);
+                int res = this.getResources().getIdentifier(plantImages[i], "drawable", getContext().getPackageName());
+                Plant plant = new Plant(i, plantNames[i], i, res);
+                data.add(plant);
             }
         }
 
         // 필터 과정을 하게되면 4개 빼고 전부 없앤다.
         else{
-            System.out.println("filter on");
             for(int i = data.size()-1; i>=4; i--){
                 //System.out.println("data.size "+data.size());
                 data.remove(i);

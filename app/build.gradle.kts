@@ -36,8 +36,8 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("com.google.android.material:material:1.9.0")
 
-    // CircleImageView 라이브러리 추가
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation("androidx.room:room-runtime:2.4.0")
+    annotationProcessor("androidx.room:room-compiler:2.4.0")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
